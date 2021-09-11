@@ -1,6 +1,8 @@
 package com.vxdev.vxanalyzing.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vxdev.vxanalyzing.dto.SaleDTO;
+import com.vxdev.vxanalyzing.dto.SaleSucessDTO;
+import com.vxdev.vxanalyzing.dto.SaleSumDTO;
 import com.vxdev.vxanalyzing.entities.Sale;
 import com.vxdev.vxanalyzing.repositories.SaleRepository;
 import com.vxdev.vxanalyzing.repositories.SellerRepository;
@@ -29,7 +33,20 @@ public class SaleService {
 			
 	}
 	
+	@Transactional(readOnly = true)
+	public List<SaleSumDTO> amountGroupedBySeller(){
+		return repository.amountGroupedBySeller();
+	}
+	
+	@Transactional(readOnly = true)
+	public List<SaleSucessDTO> sucessGroupedBySeller(){
+		return repository.sucessGroupedBySeller();
+	}
+	
+	
+	
 }
+
 
 
 
